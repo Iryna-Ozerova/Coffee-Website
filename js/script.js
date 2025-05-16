@@ -51,14 +51,14 @@ const scrollUpBtn = document.querySelector(".scrollUp-btn")
     scrollUpBtn.classList.remove("scrollUpBtn-active")
   }
   // Nav link indicator
-  const sections = document.querySelectorAll(".section[id]");
+  const sections = document.querySelectorAll("section[id]");
   sections.forEach(section => {
     const sectionHeight = section.offsetHeight,
       sectionTop = section.offsetTop - 60;
     
     let navId = document.querySelector(`.menu-content a[href*=${section.id}]`);
 
-    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+    if (scrollY + 1 >= sectionTop && scrollY <= sectionTop + sectionHeight) {
       navId.classList.add("active-navlink");
     } else {
       navId.classList.remove("active-navlink");
@@ -72,4 +72,14 @@ const scrollUpBtn = document.querySelector(".scrollUp-btn")
  
   
 // Scroll Reveal Animation
+const sr = ScrollReveal({
+  origin: 'top',
+  distance: '60px',
+  duration: 2500,
+  delay: 400,
+})
+sr.reveal(`.section-subtitle, .section-title, .section-description, .brand-img, .tesitmonial, .newsletter, .logo-content, .newsletter-inputBox, newsletter-mediaIcon, .footer-content, .footer-links`, {interval:100,})
   
+sr.reveal(`.about-imageContent, .menu-items`, { origin: 'left' })
+
+sr.reveal(`.about-details, .time-table`, { origin: 'right' })
